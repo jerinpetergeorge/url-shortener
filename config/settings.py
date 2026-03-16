@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "accounts",
     "pages",
+    "shortify",
 ]
 INSTALLED_APPS = [
     *CORE_DJANGO_APPS,
