@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     "django_su",
     "django_extensions",
+    "rest_framework",
 ]
 LOCAL_APPS = [
     "accounts",
