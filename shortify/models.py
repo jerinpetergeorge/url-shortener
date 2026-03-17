@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
+from shortify.utils import generate_short_code
+
 
 class ShortLink(TimeStampedModel):
     url = models.URLField(
@@ -12,6 +14,7 @@ class ShortLink(TimeStampedModel):
         max_length=7,
         unique=True,
         db_index=True,
+        default=generate_short_code,
         verbose_name=_("Short Code"),
     )
     alias = models.CharField(
