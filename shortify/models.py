@@ -4,11 +4,11 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class ShortLink(TimeStampedModel):
-    original_url = models.URLField(
+    url = models.URLField(
         max_length=256,
         verbose_name=_("Original URL"),
     )
-    short_code = models.CharField(
+    code = models.CharField(
         max_length=7,
         unique=True,
         db_index=True,
