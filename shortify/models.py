@@ -7,7 +7,7 @@ from shortify.utils import generate_short_code
 
 class ShortLink(TimeStampedModel):
     url = models.URLField(
-        max_length=256,
+        max_length=1024,
         verbose_name=_("Original URL"),
     )
     code = models.CharField(

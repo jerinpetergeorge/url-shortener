@@ -6,7 +6,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),
-    path("api/", include("shortify.urls")),
+    path("api/", include("shortify.urls.api")),
+    path("", include("shortify.urls")),
 ]
 
 if settings.DEBUG:
