@@ -241,3 +241,9 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
 }
+
+SHORTIFY_SETTINGS = {
+    "BASE_URL": env("SHORTIFY_BASE_URL", default="http://localhost:8000"),
+    "CODE_LENGTH": env.int("SHORTIFY_CODE_LENGTH", default=6),
+    "CACHE_TTL": env.int("SHORTIFY_CACHE_TTL", default=60 * 60),  # 1 hour
+}

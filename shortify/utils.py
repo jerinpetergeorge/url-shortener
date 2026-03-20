@@ -1,11 +1,12 @@
 import secrets
 import string
 
+from .settings import CODE_LENGTH
+
 BASE62_ALPHABET = string.digits + string.ascii_letters
-SHORT_CODE_LENGTH = 7
 
 
-def generate_short_code(length: int = SHORT_CODE_LENGTH) -> str:
+def generate_short_code(length: int = CODE_LENGTH) -> str:
     """
     Generate a cryptographically secure random Base62 short code.
     Retries are handled in the model's save() method.

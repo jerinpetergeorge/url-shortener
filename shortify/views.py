@@ -2,8 +2,11 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from rest_framework import viewsets
 
+from .cache import ShortLinkCache
 from .models import ShortLink
 from .serializers import ShortLinkSerializer
+
+cache = ShortLinkCache()
 
 
 class ShortLinkViewSet(viewsets.ModelViewSet):
@@ -17,6 +20,16 @@ class ShortLinkViewSet(viewsets.ModelViewSet):
 
 
 class RedirectView(View):
-    def get(self, request, code: str, *args, **kwargs):
+    def get(
+        self,
+        request,
+        code: str,
+        *args,
+        **kwargs,
+    ):
+        link_str = cache.get(code)
+        if link_str:
+            return redirect(link_str)
         link = get_object_or_404(ShortLink, code=code)
+        cache.set(code, link.url)
         return redirect(link.url)
